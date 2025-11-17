@@ -5,7 +5,9 @@
         public void Render(Node n)
         {
             this.RenderHelpMenu();
-            n.GetText();
+            Console.WriteLine($"\nDatum: {n.GetDate()}");
+            Console.WriteLine($"\n{n.GetText()}");
+                
 
         }
 

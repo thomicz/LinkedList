@@ -5,8 +5,11 @@
         static void Main(string[] args)
         {
             UserInterface ui = new UserInterface();
-            LinkedList l = new LinkedList();
             Node n = new Node("text", DateOnly.FromDateTime(DateTime.Now), null);
+            LinkedList l = new LinkedList(n);
+            n.SetText("Welcome to the Linked List Application!");
+
+
 
             while (true)
             {
@@ -18,7 +21,7 @@
 
                 if (command == "add")
                 {
-                    l.Add();
+                    l.Add("ahoj");
                 }
                 else if (command == "delete")
                 {
@@ -26,11 +29,11 @@
                 }
                 else if (command == "next")
                 {
-                    l.Next();
+                    n = l.Next();
                 }
                 else if (command == "previous")
                 {
-                    l.Previous();
+                    n = l.Previous();
                 }
                 else if (command == "first")
                 {

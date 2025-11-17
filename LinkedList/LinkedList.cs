@@ -1,50 +1,121 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LinkedList
+﻿namespace LinkedList
 {
     internal class LinkedList
     {
+        private Node head;     // první uzel
+        private Node tail;     // poslední uzel
+        private Node current;  // aktuální pozice v seznamu
+
         public LinkedList(Node n)
         {
-            this.n = n;
+            head = n;
+            tail = n;
+            current = n;
         }
 
-        private Node n;
-
-        public void Add()
+        // Přidá nový uzel na konec seznamu
+        public void Add(string text)
         {
-            
+            Node newNode = new Node(text, DateOnly.FromDateTime(DateTime.Now), null, tail);
+            tail.SetNext(newNode);
+            tail = newNode;
         }
 
+        // Smaže aktuální uzel (current)
         public void Delete()
         {
+            if (current == null) return;
 
+            Node? prev = current.GetPrevious();
+            Node? next = current.GetNext();
+
+            if (prev != null)
+            {
+                prev.SetNext(next);
+            }
+            else
+            {
+                head = next!; // mazal se první uzel
+            }
+
+            if (next != null)
+            {
+                next.SetPrevious(prev!);
+            }
+            else
+            {
+                tail = prev!; // mazal se poslední uzel
+            }
+
+            // posun current na následující nebo zpět
+            current = next ?? prev!;
         }
-        public void Next()
+
+        // Posune ukazatel na další uzel
+        public Node Next()
         {
+            Node? next = current.GetNext();
 
+            if (next == null)
+            {
+                throw new Exception("Žádný další uzel neexistuje.");
+            }
+
+            current = next;
+            return current;
         }
-        public void Previous()
+
+        // Posune ukazatel na předchozí uzel
+        public Node Previous()
         {
+            Node? prev = current.GetPrevious();
 
+            if (prev == null)
+            {
+                throw new Exception("Žádný předchozí uzel neexistuje.");
+            }
+
+            current = prev;
+            return current;
         }
+
+        // Nastaví current na první uzel
         public void First()
         {
-
+            current = head;
         }
+
+        // Nastaví current na poslední uzel
         public void Last()
         {
-
+            current = tail;
         }
 
-        public void Save()
+        // Vypíše všechny uzly od začátku
+        public void PrintAll()
         {
-
+            Node? tmp = head;
+            while (tmp != null)
+            {
+                Console.WriteLine($"{tmp.GetText()} ({tmp.GetDate()})");
+                tmp = tmp.GetNext();
+            }
         }
+
+        // Uloží seznam do textového souboru
+        public void Save(string path = "linkedlist.txt")
+        {
+            using StreamWriter sw = new StreamWriter(path);
+            Node? tmp = head;
+
+            while (tmp != null)
+            {
+                sw.WriteLine($"{tmp.GetText()},{tmp.GetDate()}");
+                tmp = tmp.GetNext();
+            }
+        }
+
+        // Ukončí program
         public void Close()
         {
             Environment.Exit(0);

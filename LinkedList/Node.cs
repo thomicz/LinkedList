@@ -47,5 +47,15 @@
         {
             this.date = date;
         }
+
+        public void SetNext(Node n)
+        {
+            this.next = n;
+        }
+
+        public void SetPrevious(Node n)
+        {
+            this.previous = n;
+        }
     }
 }
