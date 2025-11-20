@@ -7,7 +7,7 @@
             UserInterface ui = new UserInterface();
             Node n = new Node("text", DateOnly.FromDateTime(DateTime.Now), null);
             LinkedList l = new LinkedList(n);
-            n.SetText("Welcome to the Linked List Application!");
+            n.SetText("");
 
 
 
@@ -21,7 +21,10 @@
 
                 if (command == "add")
                 {
-                    l.Add("ahoj");
+                    Console.Clear();
+                    ui.Render(n);
+                    string text = Console.ReadLine();
+                    l.Add(text);
                 }
                 else if (command == "delete")
                 {
@@ -29,11 +32,25 @@
                 }
                 else if (command == "next")
                 {
-                    n = l.Next();
+                    try
+                    {
+                        n = l.Next();
+                    }
+                    catch
+                    {
+                       
+                    }
                 }
                 else if (command == "previous")
                 {
-                    n = l.Previous();
+                    try
+                    {
+                        n = l.Previous();
+                    }
+                    catch
+                    {
+
+                    }
                 }
                 else if (command == "first")
                 {

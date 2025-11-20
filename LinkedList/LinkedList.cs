@@ -2,9 +2,9 @@
 {
     internal class LinkedList
     {
-        private Node head;     // první uzel
-        private Node tail;     // poslední uzel
-        private Node current;  // aktuální pozice v seznamu
+        private Node head; // první uzel
+        private Node tail; // poslední uzel
+        private Node current; // aktuální pozice v seznamu
 
         public LinkedList(Node n)
         {
