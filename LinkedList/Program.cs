@@ -55,11 +55,12 @@
                 }
                 else if (command == "first" || command == "f")
                 {
-                    l.First();
+                    n = l.First();
+                    
                 }
                 else if (command == "last" || command == "l")
                 {
-                    l.Last();
+                    n = l.Last();
                 }
                 else if (command == "save" || command == "s")
                 {

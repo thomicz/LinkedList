@@ -79,15 +79,15 @@
         }
 
         // Nastaví current na první uzel
-        public void First()
+        public Node First()
         {
-            current = first;
+            return first;
         }
 
         // Nastaví current na poslední uzel
-        public void Last()
+        public Node Last()
         {
-            current = last;
+            return last;
         }
 
         // Vypíše všechny uzly od začátku
