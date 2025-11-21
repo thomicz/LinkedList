@@ -5,11 +5,12 @@
         static void Main(string[] args)
         {
             UserInterface ui = new UserInterface();
-            Node n = new Node("text", DateOnly.FromDateTime(DateTime.Now), null);
+            Node n = new Node("", DateOnly.FromDateTime(DateTime.Now), null);
             LinkedList l = new LinkedList(n);
-            n.SetText("");
 
-
+            ui.Render(n);
+            string t = Console.ReadLine();
+            n.SetText(t);
 
             while (true)
             {
@@ -19,18 +20,18 @@
                 Console.WriteLine();
                 string command = Console.ReadLine().ToLower();
 
-                if (command == "add")
+                if (command == "add" || command ==  "a")
                 {
                     Console.Clear();
                     ui.Render(n);
                     string text = Console.ReadLine();
                     l.Add(text);
                 }
-                else if (command == "delete")
+                else if (command == "delete" || command == "d")
                 {
                     l.Delete();
                 }
-                else if (command == "next")
+                else if (command == "next" ||command == "n")
                 {
                     try
                     {
@@ -41,7 +42,7 @@
                        
                     }
                 }
-                else if (command == "previous")
+                else if (command == "previous" || command == "p")
                 {
                     try
                     {
@@ -52,19 +53,19 @@
 
                     }
                 }
-                else if (command == "first")
+                else if (command == "first" || command == "f")
                 {
                     l.First();
                 }
-                else if (command == "last")
+                else if (command == "last" || command == "l")
                 {
                     l.Last();
                 }
-                else if (command == "save")
+                else if (command == "save" || command == "s")
                 {
                     l.Save();
                 }
-                else if (command == "close")
+                else if (command == "close" || command == "c")
                 {
                     l.Close();
                 }
