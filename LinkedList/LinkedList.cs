@@ -2,23 +2,22 @@
 {
     internal class LinkedList
     {
-        private Node head; // první uzel
-        private Node tail; // poslední uzel
+        private Node first; // první uzel
+        private Node last; // poslední uzel
         private Node current; // aktuální pozice v seznamu
 
         public LinkedList(Node n)
         {
-            head = n;
-            tail = n;
+            first = n;
+            last = n;
             current = n;
         }
 
-        // Přidá nový uzel na konec seznamu
         public void Add(string text)
         {
-            Node newNode = new Node(text, DateOnly.FromDateTime(DateTime.Now), null, tail);
-            tail.SetNext(newNode);
-            tail = newNode;
+            Node newNode = new Node(text, DateOnly.FromDateTime(DateTime.Now), null, last);
+            last.SetNext(newNode);
+            last = newNode;
         }
 
         // Smaže aktuální uzel (current)
@@ -35,7 +34,7 @@
             }
             else
             {
-                head = next!; // mazal se první uzel
+                first = next!; // mazal se první uzel
             }
 
             if (next != null)
@@ -44,7 +43,7 @@
             }
             else
             {
-                tail = prev!; // mazal se poslední uzel
+                last = prev!; // mazal se poslední uzel
             }
 
             // posun current na následující nebo zpět
@@ -82,19 +81,19 @@
         // Nastaví current na první uzel
         public void First()
         {
-            current = head;
+            current = first;
         }
 
         // Nastaví current na poslední uzel
         public void Last()
         {
-            current = tail;
+            current = last;
         }
 
         // Vypíše všechny uzly od začátku
         public void PrintAll()
         {
-            Node? tmp = head;
+            Node? tmp = first;
             while (tmp != null)
             {
                 Console.WriteLine($"{tmp.GetText()} ({tmp.GetDate()})");
@@ -106,7 +105,7 @@
         public void Save(string path = "linkedlist.txt")
         {
             using StreamWriter sw = new StreamWriter(path);
-            Node? tmp = head;
+            Node? tmp = first;
 
             while (tmp != null)
             {

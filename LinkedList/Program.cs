@@ -69,6 +69,10 @@
                 {
                     l.Close();
                 }
+                else if (command == "print" || command == "pr")
+                {
+                    l.PrintAll();
+                }
             }
         }
     }
