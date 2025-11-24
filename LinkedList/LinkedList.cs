@@ -23,7 +23,10 @@
         // Smaže aktuální uzel (current)
         public void Delete()
         {
-            if (current == null) return;
+            if (current == null)
+            {
+                return;
+            }
 
             Node? prev = current.GetPrevious();
             Node? next = current.GetNext();
@@ -57,7 +60,7 @@
 
             if (next == null)
             {
-                throw new Exception("Žádný další uzel neexistuje.");
+                throw new ArgumentNullException();
             }
 
             current = next;

@@ -9,7 +9,7 @@
             LinkedList l = new LinkedList(n);
 
             ui.Render(n);
-            string t = Console.ReadLine();
+            string? t = Console.ReadLine();
             n.SetText(t);
 
             while (true)
@@ -20,18 +20,18 @@
                 Console.WriteLine();
                 string command = Console.ReadLine().ToLower();
 
-                if (command == "add" || command ==  "a")
+                if (command == "add" || command == "a")
                 {
                     Console.Clear();
                     ui.Render(n);
-                    string text = Console.ReadLine();
+                    string? text = Console.ReadLine();
                     l.Add(text);
                 }
                 else if (command == "delete" || command == "d")
                 {
                     l.Delete();
                 }
-                else if (command == "next" ||command == "n")
+                else if (command == "next" || command == "n")
                 {
                     try
                     {
@@ -39,7 +39,7 @@
                     }
                     catch
                     {
-                       
+
                     }
                 }
                 else if (command == "previous" || command == "p")
@@ -56,7 +56,7 @@
                 else if (command == "first" || command == "f")
                 {
                     n = l.First();
-                    
+
                 }
                 else if (command == "last" || command == "l")
                 {
