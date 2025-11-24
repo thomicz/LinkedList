@@ -15,10 +15,30 @@
 
         public void Add(string text)
         {
-            Node newNode = new Node(text, DateOnly.FromDateTime(DateTime.Now), null, last);
-            last.SetNext(newNode);
-            last = newNode;
+            Node newNode = new Node(text, DateOnly.FromDateTime(DateTime.Now), null, current);
+
+            if (current.GetNext() != null)
+            {
+                // vložení doprostřed
+                newNode.SetNext(current.GetNext());
+                newNode.SetPrevious(current);
+                current.GetNext().SetPrevious(newNode);
+                current.SetNext(newNode);
+            }
+            else
+            {
+                // přidání na konec
+                current.SetNext(newNode);
+                last = newNode;
+            }
+
+            //current.SetNext(newNode);
+
+            
         }
+
+
+
 
         // Smaže aktuální uzel (current)
         public void Delete()
@@ -84,24 +104,15 @@
         // Nastaví current na první uzel
         public Node First()
         {
+            current = first;
             return first;
         }
 
         // Nastaví current na poslední uzel
         public Node Last()
         {
+            current = last;
             return last;
-        }
-
-        // Vypíše všechny uzly od začátku
-        public void PrintAll()
-        {
-            Node? tmp = first;
-            while (tmp != null)
-            {
-                Console.WriteLine($"{tmp.GetText()} ({tmp.GetDate()})");
-                tmp = tmp.GetNext();
-            }
         }
 
         // Uloží seznam do textového souboru
@@ -116,6 +127,8 @@
                 tmp = tmp.GetNext();
             }
         }
+
+        
 
         // Ukončí program
         public void Close()

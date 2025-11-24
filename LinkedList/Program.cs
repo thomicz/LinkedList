@@ -36,6 +36,8 @@
                     try
                     {
                         n = l.Next();
+                        ui.Render(n);
+
                     }
                     catch
                     {
@@ -47,6 +49,8 @@
                     try
                     {
                         n = l.Previous();
+                        ui.Render(n);
+
                     }
                     catch
                     {
@@ -70,10 +74,7 @@
                 {
                     l.Close();
                 }
-                else if (command == "print" || command == "pr")
-                {
-                    l.PrintAll();
-                }
+               
             }
         }
     }

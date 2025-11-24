@@ -7,8 +7,6 @@
             this.RenderHelpMenu();
             Console.WriteLine($"\nDatum: {n.GetDate()}");
             Console.WriteLine($"\n{n.GetText()}");
-                
-
         }
 
         private void RenderHelpMenu()
