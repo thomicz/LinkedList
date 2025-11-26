@@ -2,9 +2,9 @@
 {
     internal class LinkedList
     {
-        private Node first; // první uzel
-        private Node last; // poslední uzel
-        private Node current; // aktuální pozice v seznamu
+        private Node first;
+        private Node last;
+        private Node current;
 
         public LinkedList(Node n)
         {
@@ -19,7 +19,6 @@
 
             if (current.GetNext() != null)
             {
-                // vložení doprostřed
                 newNode.SetNext(current.GetNext());
                 newNode.SetPrevious(current);
                 current.GetNext().SetPrevious(newNode);
@@ -27,20 +26,10 @@
             }
             else
             {
-                // přidání na konec
                 current.SetNext(newNode);
                 last = newNode;
             }
-
-            //current.SetNext(newNode);
-
-            
         }
-
-
-
-
-        // Smaže aktuální uzel (current)
         public void Delete()
         {
             if (current == null)
@@ -57,7 +46,7 @@
             }
             else
             {
-                first = next!; // mazal se první uzel
+                first = next!; 
             }
 
             if (next != null)
@@ -66,14 +55,12 @@
             }
             else
             {
-                last = prev!; // mazal se poslední uzel
+                last = prev!; 
             }
 
-            // posun current na následující nebo zpět
             current = next ?? prev!;
         }
 
-        // Posune ukazatel na další uzel
         public Node Next()
         {
             Node? next = current.GetNext();
@@ -87,7 +74,6 @@
             return current;
         }
 
-        // Posune ukazatel na předchozí uzel
         public Node Previous()
         {
             Node? prev = current.GetPrevious();
@@ -101,21 +87,18 @@
             return current;
         }
 
-        // Nastaví current na první uzel
         public Node First()
         {
             current = first;
             return first;
         }
 
-        // Nastaví current na poslední uzel
         public Node Last()
         {
             current = last;
             return last;
         }
 
-        // Uloží seznam do textového souboru
         public void Save(string path = "linkedlist.txt")
         {
             using StreamWriter sw = new StreamWriter(path);
@@ -128,12 +111,14 @@
             }
         }
 
-        
-
-        // Ukončí program
         public void Close()
         {
             Environment.Exit(0);
+        }
+
+        public Node Current()
+        {
+            return current;
         }
     }
 }

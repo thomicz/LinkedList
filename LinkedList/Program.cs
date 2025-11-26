@@ -1,4 +1,8 @@
-﻿namespace LinkedList
+﻿using System.Collections.Generic;
+using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
+
+namespace LinkedList
 {
     internal class Program
     {
@@ -9,7 +13,18 @@
             LinkedList l = new LinkedList(n);
 
             ui.Render(n);
-            string? t = Console.ReadLine();
+            string? t = "";
+
+            while (true)
+            {
+                string line = Console.ReadLine();
+                if (line == ".")
+                {
+                    break;
+                }
+                t += line;
+            }
+
             n.SetText(t);
 
             while (true)
@@ -24,12 +39,23 @@
                 {
                     Console.Clear();
                     ui.Render(n);
-                    string? text = Console.ReadLine();
+                    string? text = "";
+
+                    while (true)
+                    {
+                        string line = Console.ReadLine();
+                        if (line == ".")
+                        {
+                            break;
+                        }
+                        text += line;
+                    }
                     l.Add(text);
                 }
                 else if (command == "delete" || command == "d")
                 {
                     l.Delete();
+                    n = l.Current();
                 }
                 else if (command == "next" || command == "n")
                 {
